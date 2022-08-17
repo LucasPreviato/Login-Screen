@@ -1,7 +1,36 @@
 import { Box, Button, Divider, Icon, Paper, useTheme } from "@mui/material"
 
+interface IDetailToolsProps {
+    textNewButton?: string;
 
-export const DetailTools : React.FC = () => {
+    showNewButton?: boolean;
+    showBackButton?: boolean;
+    showDeleteButton?: boolean;
+    showSaveButton?: boolean;
+    showBackSaveButton?: boolean;
+
+    clickNewButton? : () => void;
+    clickBackButton? : () => void;
+    clickDeleteButton? : () => void;
+    clickSaveButton? : () => void;
+    clickBackSaveButton? : () => void;
+
+}
+
+export const DetailTools : React.FC<IDetailToolsProps> = ({
+    textNewButton,
+     showNewButton ,
+      showBackButton, 
+      showBackSaveButton, 
+      showDeleteButton, 
+      showSaveButton,
+
+      clickNewButton,
+       clickBackButton,
+        clickDeleteButton,
+        clickSaveButton,
+        clickBackSaveButton,
+}) => {
     const theme = useTheme();
     return (
         <Box
