@@ -1,4 +1,5 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
+import { Environment } from "../../environment";
 
 interface IToolbarProps {
   textSearch?: string;
@@ -35,7 +36,7 @@ export const ListingTools: React.FC<IToolbarProps> = ({
           value={textSearch}
           onChange={(e) => changeTextSearch?.(e.target.value)}
           size="small"
-          placeholder="pesquisar..."
+          placeholder={Environment.SEARSH_INPUT}
         />
       )}
       <Box flex={1} display="flex" justifyContent="end">
