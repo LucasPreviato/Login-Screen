@@ -5,6 +5,9 @@ import {
   Icon,
   Paper,
   Skeleton,
+  Theme,
+  Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material'
 
@@ -51,6 +54,9 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
   clickNewButton,
   clickBackButton,
 }) => {
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+
   const theme = useTheme()
 
   return (
@@ -70,20 +76,32 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
           variant="contained"
           onClick={clickSaveButton}
           startIcon={<Icon>save</Icon>}>
-          Salvar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden">
+            Salvar
+          </Typography>
         </Button>
       )}
 
       {showSaveButtonLoading && <Skeleton width={110} height={60} />}
 
-      {showBackSaveButton && !showBackSaveButtonLoading && (
+      {showBackSaveButton && !showBackSaveButtonLoading && !smDown && !mdDown && (
         <Button
           color="primary"
           disableElevation
           variant="outlined"
           onClick={clickBackSaveButton}
           startIcon={<Icon>save</Icon>}>
-          Salvar e voltar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden">
+            Salvar e voltar
+          </Typography>
         </Button>
       )}
 
@@ -96,26 +114,44 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
           variant="outlined"
           onClick={clickDeleteButton}
           startIcon={<Icon>delete</Icon>}>
-          Apagar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden">
+            Apagar
+          </Typography>
         </Button>
       )}
 
       {showDeleteButtonLoading && <Skeleton width={110} height={60} />}
 
-      {showNewButton && !showNewButtonLoading && (
+      {showNewButton && !showNewButtonLoading && !smDown && (
         <Button
           color="primary"
           disableElevation
           variant="outlined"
           onClick={clickNewButton}
           startIcon={<Icon>add</Icon>}>
-          {textNewButton}
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden">
+            {textNewButton}
+          </Typography>
         </Button>
       )}
 
       {showNewButtonLoading && <Skeleton width={97} height={60} />}
 
-      <Divider variant="middle" orientation="vertical" />
+      {showBackButton &&
+        (showSaveButton ||
+          showNewButton ||
+          showDeleteButton ||
+          showBackSaveButton) && (
+          <Divider variant="middle" orientation="vertical" />
+        )}
       {showBackButton && !showBackButtonLoading && (
         <Button
           color="primary"
@@ -123,7 +159,13 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
           variant="outlined"
           onClick={clickBackButton}
           startIcon={<Icon>arrow_back</Icon>}>
-          voltar
+          <Typography
+            variant="button"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            overflow="hidden">
+            voltar
+          </Typography>
         </Button>
       )}
       {showBackButtonLoading && <Skeleton width={110} height={60} />}
