@@ -19,7 +19,7 @@ type TPessoasComTotalCount = {
     data : IListingPessoa [];
     totalCount : number;
 }
-const getAll = async (page =1, filter = '') : Promise<TPessoasComTotalCount | Error>=> {
+const getAll = async (page=1, filter= '') : Promise<TPessoasComTotalCount | Error>=> {
     try {
         const urlRelative =`/colaboradores?_page=${page}&_limit=${Environment.ROWS_LIMIT}&nomeCompleto_like=${filter}`;
         const {data, headers} = await Api.get(urlRelative)

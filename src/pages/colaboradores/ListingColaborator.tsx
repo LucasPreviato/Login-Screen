@@ -1,4 +1,3 @@
-import { resourceUsage } from "process";
 import React, { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ListingTools } from "../../shared/components";
@@ -8,14 +7,14 @@ import {PessoasService} from "../../shared/services/api/pessoas/PessoasService"
 export const ListingColaborator: React.FC = () => {
 
     const [searchParams, setSearchParams]= useSearchParams();
-
-    const search = useMemo(()=> {
-        return searchParams.get("busca" || "");
+   
+    const search  = useMemo(()=> {
+        return searchParams.get("search") ||"" ;
     },[searchParams]);
 
     useEffect(()=>{
 
-        PessoasService.getAll()
+        PessoasService.getAll(1,search)
         .then((result) =>{
             if(result instanceof Error){
                 alert(result.message)
@@ -24,7 +23,7 @@ export const ListingColaborator: React.FC = () => {
             }
         })
         
-    },[])
+    },[search])
 
     return (
         <LayoutBasePages titulo="Listagem de colaboradores"
