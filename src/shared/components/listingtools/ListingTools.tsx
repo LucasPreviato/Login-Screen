@@ -2,7 +2,7 @@ import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
 import { Environment } from "../../environment";
 
 interface IToolbarProps {
-  textSearch?: string;
+  textSearch?: string | null;
   showInputSearch?: boolean;
   changeTextSearch?: (newText: string) => void;
   newTextButton?: string;

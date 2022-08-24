@@ -1,2 +1,2 @@
 export * from "./dashboard/Dashboard";
-export * from "./cidades/ListingCity"
+export * from "./colaboradores/ListingColaborator"
